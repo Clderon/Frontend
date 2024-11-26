@@ -1,12 +1,13 @@
-import LoginForm from './components/Auth/LoginForm';
-import RegisterForm from './components/Auth/RegisterForm';
+import LoginForm from './features/Auth/LoginForm';
+import RegisterForm from './features/Auth/RegisterForm';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/login" element={<LoginForm />} />
+                <Route path="/" element={<LoginForm />} />
                 <Route path="/register" element={<RegisterForm />} />
                 {/* <Route path="/home" element={<HomePage />} /> */}
             </Routes>

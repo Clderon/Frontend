@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { MdEmail } from 'react-icons/md';
 import { FaLock } from 'react-icons/fa';
+import { Input, Button } from '../../components/common';
 
 export default function LoginForm() {
     const [username, setUsername] = useState('');
@@ -23,42 +24,33 @@ export default function LoginForm() {
     return (
         <div className="contenedor">
             <form className="login-form" action="" onSubmit={handleSubmit}>
-                <h2>Login</h2>
+                <h2>Iniciar sesión</h2>
                 <div className="input-box">
-                    <input
-                        name="email"
-                        type="email"
-                        placeholder="E-mail"
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                    />
+                    <Input placeholder={'E-mail'} type="email" />
                     <MdEmail className="icon" />
                 </div>
 
                 <div className="input-box">
-                    <input
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
+                    <Input placeholder={'Contraseña'} type="password" />
                     <FaLock className="icon" />
                 </div>
                 <div className="remember-forgot">
-                    <label htmlFor="password">
-                        <input type="checkbox" />
-                        Remember me
+                    <label>
+                        <Input type="checkbox" />
+                        Recuérdame
                     </label>
-                    <a href="http://localhost:3000/">Forgot password?</a>
+
+                    <a href="http://localhost:3000/">
+                        ¿Olvidaste tu contraseña?
+                    </a>
                 </div>
-                <button type="submit">Login</button>
+                <Button>Iniciar sesión</Button>
 
                 <div className="register-link">
                     <p>
-                        Don't have a count
-                        <a href="" onClick={handleRegister}>
-                            Register
+                        ¿No tienes una cuenta?
+                        <a href="/" onClick={handleRegister}>
+                            Regístrate
                         </a>
                     </p>
                 </div>

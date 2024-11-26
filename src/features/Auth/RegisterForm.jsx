@@ -3,16 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import { MdEmail } from 'react-icons/md';
 import { FaLock, FaUser } from 'react-icons/fa';
 import React, { useState } from 'react';
+import { Input, Button, Select } from '../../components/common';
 
 export default function RegisterForm() {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        gender: '',
-        password: '',
+        nombres: '',
+        apellidos: '',
+        correo: '',
+        genero: '',
+        contraseña: '',
     });
+
     const navigate = useNavigate();
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
@@ -24,84 +27,71 @@ export default function RegisterForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
-        navigate('/login');
+        // navigate('/');
     };
     return (
         <div className="contenedor">
             <form className="login-form" onSubmit={handleSubmit}>
-                <h2>Register</h2>
+                <h2>Registrarse</h2>
 
-                {/* Nombre */}
                 <div className="input-box">
-                    <input
-                        name="firstName"
+                    <Input
+                        placeholder={'Nombre'}
                         type="text"
-                        placeholder="Nombre"
-                        value={formData.firstName}
                         onChange={handleChange}
-                        required
+                        name="nombres"
                     />
+
                     <FaUser className="icon" />
                 </div>
 
-                {/* Apellido */}
                 <div className="input-box">
-                    <input
-                        name="lastName"
+                    <Input
+                        placeholder={'Apellidos'}
                         type="text"
-                        placeholder="Apellidos"
-                        value={formData.lastName}
                         onChange={handleChange}
-                        required
+                        name="apellidos"
                     />
+
                     <FaUser className="icon" />
                 </div>
 
-                {/* Correo */}
                 <div className="input-box">
-                    <input
-                        name="email"
+                    <Input
+                        placeholder={'E-mail'}
                         type="email"
-                        placeholder="E-mail"
-                        value={formData.email}
                         onChange={handleChange}
-                        required
+                        name="correo"
                     />
+
                     <MdEmail className="icon" />
                 </div>
 
-                {/* Género */}
                 <div className="input-box">
-                    <select
-                        name="gender"
-                        value={formData.gender}
+                    <Select
+                        placeholder="Seleccionar genero"
+                        options={[
+                            { value: 'male', label: 'Masculino' },
+                            { value: 'female', label: 'Femenino' },
+                            { value: 'other', label: 'Otro' },
+                        ]}
                         onChange={handleChange}
-                        required
-                    >
-                        <option value="" disabled>
-                            Seleccionar Genero
-                        </option>
-                        <option value="male">Mascullo</option>
-                        <option value="female">Femenino</option>
-                        {/* <option value="other">Other</option> */}
-                    </select>
+                        name={'genero'}
+                    />
                 </div>
 
-                {/* Contraseña */}
                 <div className="input-box">
-                    <input
-                        name="password"
+                    <Input
+                        placeholder={'Contraseña'}
                         type="password"
-                        placeholder="Contraseña"
-                        value={formData.password}
                         onChange={handleChange}
-                        required
+                        name="contraseña"
                     />
+
                     <FaLock className="icon" />
                 </div>
 
-                {/* Botón de registro */}
-                <button type="submit">Register</button>
+                <Button>Register</Button>
             </form>
         </div>
     );

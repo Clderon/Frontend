@@ -1,9 +1,9 @@
-import './LoginForm.css';
+import '../Auth.css';
 import { useNavigate } from 'react-router-dom';
 import { MdEmail } from 'react-icons/md';
 import { FaLock, FaUser } from 'react-icons/fa';
 import React, { useState } from 'react';
-import { Input, Button, Select } from '../../components/common';
+import { Input, Button, Select } from '../../../components/common';
 
 export default function RegisterForm() {
     const [formData, setFormData] = useState({
@@ -27,7 +27,7 @@ export default function RegisterForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
-        // navigate('/');
+        navigate('/');
     };
     return (
         <div className="contenedor">
